@@ -7,7 +7,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link ref="stylesheet" href="sticker.css"/>
     <script src="https://rawgit.com/codef0rmer/angular-dragdrop/master/src/angular-dragdrop.js"></script>
     <script src="app.js"></script>
     <style>
@@ -24,7 +25,7 @@
             <ul class="thumbnails">
               <li class="span3" style='margin-left:10px;' ng-repeat="item in list1">
                 <div class="btn btn-droppable" data-drop="true" ng-model='list1' jqyoui-droppable="{index: {{$index}}}">
-                  <div class="btn btn-info btn-draggable" ng-show="item.title" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{item.title}}</div>
+                  <div class="sticker btn btn-info btn-draggable" ng-show="item.title" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{item.title}}</div>
                 </div>
               </li>
             </ul>
@@ -36,8 +37,15 @@
           <div class="btn btn-droppable" ng-repeat="item in list2 | orderBy : 'title'" data-drop="true" ng-model='list2' jqyoui-droppable="{index: {{$index}}, applyFilter: 'filterIt'}">
             <div class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list2" jqyoui-draggable="{index: {{$index}},animate:true, applyFilter: 'filterIt'}" ng-hide="!item.title">{{item.title}}</div>
           </div>
+          
         </div>
       </div>
+      <div class="sticker">a sticker</div>
     </div>
+    <div class="page">
+    <div class="sticker">
+      <span class="text">9 August 14</span>
+    </div>
+</div>
   </body>  
 </html>
