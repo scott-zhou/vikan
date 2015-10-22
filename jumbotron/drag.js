@@ -10,7 +10,7 @@ $(function() {
     var $done = $('#done');
 
     // let the gallery items be draggable
-    $("div", $todo).draggable({
+    $("> div", $todo).draggable({
         cancel: "a.ui-icon", // clicking an icon won't initiate dragging
         revert: "invalid", // when not dropped, the item will revert back to its initial position
         containment: "document",
@@ -32,7 +32,7 @@ $(function() {
             // moveTask(ui);
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
-            $("#" + draggableId).prependTo($("#first_doing", $doing));
+            $("#" + draggableId).appendTo($doing);
             // $("div", ui).appendTo($("div", doing));
             // var dra = ui.draggable;
             // var con = dra.context;
