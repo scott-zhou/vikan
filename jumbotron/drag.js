@@ -56,12 +56,6 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($done);
-            // $("div", ui).appendTo($("div", doing));
-            // var dra = ui.draggable;
-            // var con = dra.context;
-            // $doing.appendChild(con.children);
-            // con.children.appendTo($doing);
-            // ui.remove();
         }
     });
  $doing.droppable({
@@ -72,12 +66,6 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($doing);
-            // $("div", ui).appendTo($("div", doing));
-            // var dra = ui.draggable;
-            // var con = dra.context;
-            // $doing.appendChild(con.children);
-            // con.children.appendTo($doing);
-            // ui.remove();
         }
     });
  $todo.droppable({
@@ -88,12 +76,6 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($todo);
-            // $("div", ui).appendTo($("div", doing));
-            // var dra = ui.draggable;
-            // var con = dra.context;
-            // $doing.appendChild(con.children);
-            // con.children.appendTo($doing);
-            // ui.remove();
         }
     });
     
