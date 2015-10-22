@@ -9,7 +9,23 @@ $(function() {
     var $doing = $('#doing');
     var $done = $('#done');
 
-    // let the gallery items be draggable
+    var $setDroppable = function() {
+            $("> div", $todo).draggable({
+                cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+                revert: "invalid", // when not dropped, the item will revert back to its initial position
+                containment: "document",
+                helper: "clone",
+                cursor: "move"
+                    // drop: function(event, ui) {
+                    //     var draggableId = ui.draggable.attr("id");
+                    //     var droppableId = $(this).attr("id");
+                    //     $(draggableId).prependTo($(droppableId));
+                    // }
+            });
+
+
+        }
+        // let the gallery items be draggable
     $("> div", $todo).draggable({
         cancel: "a.ui-icon", // clicking an icon won't initiate dragging
         revert: "invalid", // when not dropped, the item will revert back to its initial position
@@ -136,5 +152,12 @@ $(function() {
         }
 
         return false;
+    });
+
+    var template = $('#hidden-template').html();
+
+    $('#addTask').on('click', function(e) {
+        $todo.append(template);
+        $setDroppable();
     });
 });

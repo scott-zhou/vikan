@@ -22,6 +22,20 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../assets/js/ie-emulation-modes-warning.js"></script>
+    <script id="hidden-template" type="text/x-custom-template">
+        <div id="todo_template" class="wells sticky" style="background-color: #E8E523; height: 180px">
+            <h3 style="color:black">Create mock project</h3>
+            <div class="editable" style="color:black" data-type="text">some description</div>
+            <div align="left">
+                <input type="checkbox" aria-label="  ">Cras justo odio
+                <span class="badge">14</span>
+            </div>
+            <div>
+                <input type="checkbox">test kvm machine
+                <span class="badge">2</span>
+            </div>
+        </div>
+    </script>
     <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
     -->
@@ -88,6 +102,8 @@
                         <span class="badge">2</span>
                     </div>
                 </div>
+                <br>
+                <div id="addTask" class="btn btn-primary">add task</div>
             </div>
             <div id="doing" class="col-md-4" style="padding-right: 25px;">
                 <h2>Doing</h2>
@@ -150,7 +166,7 @@
     $(function() {
         $(".draggable").draggable();
         $.fn.editable.defaults.mode = 'inline';
-         $('.editable').editable();
+        $('.editable').editable();
 
     });
     </script>
