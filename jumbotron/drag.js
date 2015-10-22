@@ -26,7 +26,11 @@ $(function() {
 
         }
         // let the gallery items be draggable
-    $("> div", $todo).draggable({
+ 
+    // Setting the items in each of the columns to be draggable and droppable.
+    var $targets = [$todo, $doing, $done];
+    for(var i = 0; i < $targets.length; i++) {
+	$("> div", $targets[i]).draggable({
         cancel: "a.ui-icon", // clicking an icon won't initiate dragging
         revert: "invalid", // when not dropped, the item will revert back to its initial position
         containment: "document",
@@ -37,11 +41,30 @@ $(function() {
             //     var droppableId = $(this).attr("id");
             //     $(draggableId).prependTo($(droppableId));
             // }
+		    })};
+
+     
+	    
+
+    // Setting the items in each of the columns to be droppable.
+    
+    $done.droppable({
+        // accept: "#todo",
+        activeClass: "ui-state-highlight",
+        drop: function(event, ui) {
+            // moveTask(ui);
+            var draggableId = ui.draggable.attr("id");
+            var droppableId = $(this).attr("id");
+            $("#" + draggableId).appendTo($done);
+            // $("div", ui).appendTo($("div", doing));
+            // var dra = ui.draggable;
+            // var con = dra.context;
+            // $doing.appendChild(con.children);
+            // con.children.appendTo($doing);
+            // ui.remove();
+        }
     });
-
-
-    // let the trash be droppable, accepting the gallery items
-    $doing.droppable({
+ $doing.droppable({
         // accept: "#todo",
         activeClass: "ui-state-highlight",
         drop: function(event, ui) {
@@ -57,7 +80,23 @@ $(function() {
             // ui.remove();
         }
     });
-
+ $todo.droppable({
+        // accept: "#todo",
+        activeClass: "ui-state-highlight",
+        drop: function(event, ui) {
+            // moveTask(ui);
+            var draggableId = ui.draggable.attr("id");
+            var droppableId = $(this).attr("id");
+            $("#" + draggableId).appendTo($todo);
+            // $("div", ui).appendTo($("div", doing));
+            // var dra = ui.draggable;
+            // var con = dra.context;
+            // $doing.appendChild(con.children);
+            // con.children.appendTo($doing);
+            // ui.remove();
+        }
+    });
+    
     function moveTask($item) {
 
         $item.draggable.fadeOut(function() {
