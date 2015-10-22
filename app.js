@@ -59,7 +59,7 @@ App.controller('oneCtrl', function($scope, $timeout, $filter, $http, $templateCa
     $http({method: $scope.method, url: $scope.url, data: $scope.data, cache: $templateCache});
   }
 
-//  $scope.add_new_task('New task', 'test', 'ToDo', 'Rockie', 'Add a new task in mongo db');
+//  $scope.add_new_task('Done task', 'test', 'Done', 'Rockie', 'Add a Done task in mongo db');
 //  $scope.update_task('5628c903e4b0bf8fc40631f7', 'Updated task', 'test', 'ToDo', 'Rockie', 'Update task in mongo db');
 //  $scope.delete_task('5628df76e4b07a7ab89612ea');
 //  $scope.archive_task('5628c99ee4b026215dd705db');

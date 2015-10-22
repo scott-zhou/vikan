@@ -26,28 +26,26 @@ $(function() {
 
         }
         // let the gallery items be draggable
- 
+
     // Setting the items in each of the columns to be draggable and droppable.
     var $targets = [$todo, $doing, $done];
-    for(var i = 0; i < $targets.length; i++) {
-	$("> div", $targets[i]).draggable({
-        cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-        revert: "invalid", // when not dropped, the item will revert back to its initial position
-        containment: "document",
-        helper: "clone",
-        cursor: "move"
-            // drop: function(event, ui) {
-            //     var draggableId = ui.draggable.attr("id");
-            //     var droppableId = $(this).attr("id");
-            //     $(draggableId).prependTo($(droppableId));
-            // }
-		    })};
-
-     
-	    
+    for (var i = 0; i < $targets.length; i++) {
+        $("> div", $targets[i]).draggable({
+            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+            revert: "invalid", // when not dropped, the item will revert back to its initial position
+            containment: "document",
+            helper: "clone",
+            cursor: "move"
+                // drop: function(event, ui) {
+                //     var draggableId = ui.draggable.attr("id");
+                //     var droppableId = $(this).attr("id");
+                //     $(draggableId).prependTo($(droppableId));
+                // }
+        })
+    };
 
     // Setting the items in each of the columns to be droppable.
-    
+
     $done.droppable({
         // accept: "#todo",
         activeClass: "ui-state-highlight",
@@ -58,7 +56,7 @@ $(function() {
             $("#" + draggableId).appendTo($done);
         }
     });
- $doing.droppable({
+    $doing.droppable({
         // accept: "#todo",
         activeClass: "ui-state-highlight",
         drop: function(event, ui) {
@@ -68,7 +66,7 @@ $(function() {
             $("#" + draggableId).appendTo($doing);
         }
     });
- $todo.droppable({
+    $todo.droppable({
         // accept: "#todo",
         activeClass: "ui-state-highlight",
         drop: function(event, ui) {
@@ -78,7 +76,7 @@ $(function() {
             $("#" + draggableId).appendTo($todo);
         }
     });
-    
+
     function moveTask($item) {
 
         $item.draggable.fadeOut(function() {
@@ -180,5 +178,6 @@ $(function() {
     $('#addTask').on('click', function(e) {
         $todo.append(template);
         $setDroppable();
+	$('.editable').editable();
     });
 });
