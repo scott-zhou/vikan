@@ -17,6 +17,8 @@
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
     <link href="../sticky.css" ref="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'> -->
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../assets/js/ie-emulation-modes-warning.js"></script>
@@ -60,10 +62,9 @@
     <div class="container">
         <!-- Example row of columns -->
         <div class="row">
-            <div class="col-md-4">
+            <div id="todo" class="col-md-4">
                 <h2>TODO</h2>
-                
-                <div class="wells sticky" style="background-color: #E8E523; height: 200px">
+                <div class="wells sticky draggable" style="background-color: #E8E523; height: 180px">
                     <h3 style="color:black">Create mock project</h3>
                     <div style="color:black">some description</div>
                     <div align="left">
@@ -75,8 +76,7 @@
                         <span class="badge">2</span>
                     </div>
                 </div>
-
-                <div class="wells sticky" style="background-color: #E8E523; height: 200px">
+                <div id="gallery" class="wells sticky gallery" style="background-color: #E8E523; height: 180px">
                     <h3 style="color:black">Create database project</h3>
                     <div style="color:black">some description</div>
                     <div align="left">
@@ -88,11 +88,10 @@
                         <span class="badge">2</span>
                     </div>
                 </div>
-
             </div>
-            <div class="col-md-4">
+            <div id="doing" class="col-md-4" style="padding-right: 25px;">
                 <h2>Doing</h2>
-                <div class="wells sticky" style="background-color: #CC3B3E; height: 200px">
+                <div class="wells sticky" style="background-color: #CC3B3E; height: 180px">
                     <h3 style="color:black">solve database connection problem</h3>
                     <div style="color:black">some description</div>
                     <div align="left">
@@ -104,11 +103,10 @@
                         <span class="badge">2</span>
                     </div>
                 </div>
-
             </div>
-            <div class="col-md-4">
+            <div id="done" class="col-md-4" style="padding-right: 5px;">
                 <h2>Done</h2>
-                <div class="wells sticky" style="background-color: #0BE0A0; height: 200px">
+                <div class="wells sticky" style="background-color: #0BE0A0; height: 180px">
                     <h3 style="color:black">Create mock project</h3>
                     <div style="color:black">some description</div>
                     <div align="left">
@@ -142,9 +140,16 @@
     <script>
     window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')
     </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script src="../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="drag.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $(".draggable").draggable();
+    });
+    </script>
     <!--<script type="text/javascript" src="../app.js"></script>-->
 </body>
 
