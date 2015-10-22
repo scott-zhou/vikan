@@ -1,16 +1,33 @@
-var App = angular.module('drag-and-drop', ['ngDragDrop']);
+var App = angular.module('kanban', [])
+.directive('myRepeatDirective', function() {
+  return function(scope, element, attrs) {
+    console.log(angular.element(element));
+/*    angular.element(element).draggable({
+        cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+        revert: "invalid", // when not dropped, the item will revert back to its initial position
+        containment: "document",
+        helper: "clone",
+        cursor: "move"
+    });*/
+var $todo = $('#todo');
+$("div", $todo).draggable({
+        cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+        revert: "invalid", // when not dropped, the item will revert back to its initial position
+        containment: "document",
+        helper: "clone",
+        cursor: "move"
+    });
+    
+  };
+});
 
-App.controller('oneCtrl', function($scope, $timeout, $filter, $http, $templateCache) {
+App.controller('task_ctrl', function($scope, $http, $templateCache) {
 
   $scope.apiKey = 'MUB9xFbstbjdkOkoub_h_40gdV_KX4lm';
 
-  $scope.filterIt = function() {
-    return $filter('orderBy')($scope.list2, 'title');
-  };
-
-
-  $scope.list1 = [{ 'title': 'Default doing task', 'drag': true }];
-  $scope.list2 = [{ 'title': 'Default ToDo task', 'drag': true }];
+  $scope.todo_tasks = [];
+  $scope.doing_tasks = [];
+  $scope.done_tasks = [];
 
   $scope.query_tasks = function(){
     $scope.method = 'GET';
@@ -22,12 +39,14 @@ App.controller('oneCtrl', function($scope, $timeout, $filter, $http, $templateCa
             task = data[i];
             console.log(task);
             if(task.status == 'ToDo') {
-              $scope.list2.push({'title': task.title, 'drag': true});
+              $scope.todo_tasks.push(task);
             }
-            else {
-              $scope.list1.push({'title': task.title, 'drag': true});
+            else if(task.status == 'Doing') {
+              $scope.doing_tasks.push(task);
             }
-            
+            else if(task.status == 'Done'){
+              $scope.done_tasks.push(task);
+            }
           }
         });
   };
@@ -59,13 +78,12 @@ App.controller('oneCtrl', function($scope, $timeout, $filter, $http, $templateCa
     $http({method: $scope.method, url: $scope.url, data: $scope.data, cache: $templateCache});
   }
 
+
 //  $scope.add_new_task('Done task', 'test', 'Done', 'Rockie', 'Add a Done task in mongo db');
 //  $scope.update_task('5628c903e4b0bf8fc40631f7', 'Updated task', 'test', 'ToDo', 'Rockie', 'Update task in mongo db');
 //  $scope.delete_task('5628df76e4b07a7ab89612ea');
 //  $scope.archive_task('5628c99ee4b026215dd705db');
-  $scope.query_tasks();
 
-  angular.forEach($scope.list2, function(val, key) {
-    $scope.list1.push({});
-  });
+
+  $scope.query_tasks();
 });

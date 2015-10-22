@@ -9,6 +9,8 @@ $(function() {
     var $doing = $('#doing');
     var $done = $('#done');
 
+    console.log($todo);
+
     // let the gallery items be draggable
     $("div", $todo).draggable({
         cancel: "a.ui-icon", // clicking an icon won't initiate dragging
@@ -17,6 +19,7 @@ $(function() {
         helper: "clone",
         cursor: "move"
     });
+    console.log($todo);
 
     // let the trash be droppable, accepting the gallery items
     $trash.droppable({
