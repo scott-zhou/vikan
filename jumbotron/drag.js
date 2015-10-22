@@ -9,37 +9,58 @@ $(function() {
     var $doing = $('#doing');
     var $done = $('#done');
 
-    console.log($todo);
+    var $setDroppable = function() {
+            $("> div", $todo).draggable({
+                cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+                revert: "invalid", // when not dropped, the item will revert back to its initial position
+                containment: "document",
+                helper: "clone",
+                cursor: "move"
+                    // drop: function(event, ui) {
+                    //     var draggableId = ui.draggable.attr("id");
+                    //     var droppableId = $(this).attr("id");
+                    //     $(draggableId).prependTo($(droppableId));
+                    // }
+            });
 
-    // let the gallery items be draggable
-    $("div", $todo).draggable({
+
+        }
+        // let the gallery items be draggable
+    $("> div", $todo).draggable({
         cancel: "a.ui-icon", // clicking an icon won't initiate dragging
         revert: "invalid", // when not dropped, the item will revert back to its initial position
         containment: "document",
         helper: "clone",
         cursor: "move"
+            // drop: function(event, ui) {
+            //     var draggableId = ui.draggable.attr("id");
+            //     var droppableId = $(this).attr("id");
+            //     $(draggableId).prependTo($(droppableId));
+            // }
     });
     console.log($todo);
 
-    // let the trash be droppable, accepting the gallery items
-    $trash.droppable({
-        accept: "#gallery > li",
-        activeClass: "ui-state-highlight",
-        drop: function(event, ui) {
-            deleteImage(ui.draggable);
-        }
-    });
 
     // let the trash be droppable, accepting the gallery items
     $doing.droppable({
         // accept: "#todo",
         activeClass: "ui-state-highlight",
         drop: function(event, ui) {
-            moveTask(ui);
+            // moveTask(ui);
+            var draggableId = ui.draggable.attr("id");
+            var droppableId = $(this).attr("id");
+            $("#" + draggableId).appendTo($doing);
+            // $("div", ui).appendTo($("div", doing));
+            // var dra = ui.draggable;
+            // var con = dra.context;
+            // $doing.appendChild(con.children);
+            // con.children.appendTo($doing);
+            // ui.remove();
         }
     });
 
     function moveTask($item) {
+
         $item.draggable.fadeOut(function() {
             $item.draggable.appendTo(this);
         });
@@ -132,5 +153,12 @@ $(function() {
         }
 
         return false;
+    });
+
+    var template = $('#hidden-template').html();
+
+    $('#addTask').on('click', function(e) {
+        $todo.append(template);
+        $setDroppable();
     });
 });
