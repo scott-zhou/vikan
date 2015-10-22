@@ -66,7 +66,7 @@
                 <h2>TODO</h2>
                 <div id="first_todo" class="wells sticky" style="background-color: #E8E523; height: 180px">
                     <h3 style="color:black">Create mock project</h3>
-                    <div style="color:black">some description</div>
+                    <div class="editable" style="color:black" data-type="text">some description</div>
                     <div align="left">
                         <input type="checkbox" aria-label="  ">Cras justo odio
                         <span class="badge">14</span>
@@ -149,8 +149,13 @@
     <script type="text/javascript">
     $(function() {
         $(".draggable").draggable();
+        $.fn.editable.defaults.mode = 'inline';
+         $('.editable').editable();
+
     });
     </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <!--<script type="text/javascript" src="../app.js"></script>-->
 </body>
 
