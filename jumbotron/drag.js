@@ -176,7 +176,9 @@ $(function() {
     var template = $('#hidden-template').html();
 
     $('#addTask').on('click', function(e) {
-        $todo.append(template);
+        var new_task = template.replace('Create mock project',  'Create SOME mock project');
+        console.log(new_task);
+        $todo.append(new_task);
         $setDroppable();
         $('.editable').editable();
     });
