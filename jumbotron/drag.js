@@ -178,6 +178,6 @@ $(function() {
     $('#addTask').on('click', function(e) {
         $todo.append(template);
         $setDroppable();
-	$('.editable').editable();
+        $('.editable').editable();
     });
 });
