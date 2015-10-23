@@ -54,6 +54,9 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($done);
+
+            $("#" + draggableId).attr("class", "wells sticky_done ui-draggable");
+
         }
     });
     $doing.droppable({
