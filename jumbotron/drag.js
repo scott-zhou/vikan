@@ -36,11 +36,6 @@ $(function() {
             containment: "document",
             helper: "clone",
             cursor: "move"
-                // drop: function(event, ui) {
-                //     var draggableId = ui.draggable.attr("id");
-                //     var droppableId = $(this).attr("id");
-                //     $(draggableId).prependTo($(droppableId));
-                // }
         })
     };
 
@@ -54,11 +49,11 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($done);
-
-            $("#" + draggableId).attr("class", "wells sticky_done ui-draggable");
+	    $("#" + draggableId).attr("class", "wells sticky_done ui-draggable");
+	    }
 
         }
-    });
+    );
     $doing.droppable({
         // accept: "#todo",
         activeClass: "ui-state-highlight",
@@ -67,6 +62,11 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($doing);
+	    if($("#" + draggableId).attr('urgent') == "true") { 
+		$("#" + draggableId).attr("class", "wells sticky_urgent ui-draggable");
+	    } else {
+		$("#" + draggableId).attr("class", "wells sticky ui-draggable");
+	    }
         }
     });
     $todo.droppable({
@@ -77,6 +77,11 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($todo);
+	    if($("#" + draggableId).attr('urgent') == "true") { 
+		$("#" + draggableId).attr("class", "wells sticky_urgent ui-draggable");
+	    } else {
+		$("#" + draggableId).attr("class", "wells sticky ui-draggable");
+	    }
         }
     });
 
@@ -177,12 +182,24 @@ $(function() {
     });
 
     var template = $('#hidden-template').html();
+    
+    $('#addTask').on('click', function(e) {
+	    var new_task = template.replace('Create mock project',  'Create SOME mock project');
+	    console.log(new_task);
+	    $todo.append(new_task);
+	    $setDroppable();
+	    $('.editable').editable();
+	});
+
+    /*var template = $('#hidden-template').html();
 
     $('#addTask').on('click', function(e) {
+        //add_new_task('title', 'type', 'status', 'owner', 'description');
+        console.log(e);
         var new_task = template.replace('Create mock project',  'Create SOME mock project');
         console.log(new_task);
         $todo.append(new_task);
         $setDroppable();
         $('.editable').editable();
-    });
+    });*/
 });
