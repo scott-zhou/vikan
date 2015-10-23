@@ -79,7 +79,7 @@
         <div class="row">
             <div id="todo" class="col-md-4">
                 <div>
-                    <h2> TODO <div id="addTask" class="btn btn-primary"> + </div></h2>
+                    <h2> TODO <div add-task-dir id="addTask" class="btn btn-primary"> + </div></h2>
                 </div>
                 <div id="{{ task._id.$oid.toString() }}" class="wells sticky draggable" style="background-color: #E8E523; height: 180px" ng-repeat="task in todo_tasks" my-repeat-directive>
                     <h3 style="color:black">{{ task.title }}</h3>

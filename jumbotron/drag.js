@@ -176,13 +176,15 @@ $(function() {
         return false;
     });
 
-    var template = $('#hidden-template').html();
+    /*var template = $('#hidden-template').html();
 
     $('#addTask').on('click', function(e) {
+        //add_new_task('title', 'type', 'status', 'owner', 'description');
+        console.log(e);
         var new_task = template.replace('Create mock project',  'Create SOME mock project');
         console.log(new_task);
         $todo.append(new_task);
         $setDroppable();
         $('.editable').editable();
-    });
+    });*/
 });
