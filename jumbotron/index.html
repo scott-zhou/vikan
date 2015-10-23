@@ -47,10 +47,11 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 </head>
 
-<body>
+<body ng-app="kanban">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <img ng-src="https://avatars.githubusercontent.com/{{Username}}" style="width:50px;height:50px;" ng-show="Username" />
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -62,7 +63,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
+                        <input type="text" placeholder="Username" class="form-control" ng-model="Username">
                     </div>
                     <div class="form-group">
                         <input type="password" placeholder="Password" class="form-control">
@@ -74,14 +75,14 @@
         </div>
     </nav>
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="container" ng-app="kanban" ng-controller="task_ctrl">
+    <div class="container" ng-controller="task_ctrl">
         <!-- Example row of columns -->
         <div class="row">
             <div id="todo" class="col-md-4">
                 <div>
                     <h2> TODO <div add-task-dir id="addTask" class="btn btn-primary"> + </div></h2>
                 </div>
-                <div id="{{ task._id.$oid.toString() }}" class="wells sticky draggable" style="background-color: #E8E523; height: 180px" ng-repeat="task in todo_tasks" my-repeat-directive>
+                <div id="{{ task._id.$oid.toString() }}" class="wells sticky draggable" style="background-color: #E8E523; height: auto" ng-repeat="task in todo_tasks" my-repeat-directive>
                     <h3 style="color:black">{{ task.title }}</h3>
                     <div class="editable" style="color:black" data-type="text">{{ task.description }}</div>
                     <div style="color:black">{{ task.owner }}</div>
@@ -94,7 +95,7 @@
                         <span class="badge">2</span>
                     </div>
                 </div>
-                <div id="gallery" class="wells sticky draggable" style="background-color: #E8E523; height: 180px">
+                <div id="gallery" class="wells sticky draggable" style="background-color: #E8E523; height: auto">
                     <h3 style="color:black">Create mock project</h3>
                     <div class="editable" style="color:black" data-type="text">some description</div>
                     <div align="left">
@@ -129,7 +130,7 @@
             </div>
             <div id="done" class="col-md-4" style="padding-right: 5px;">
                 <h2> Done </h2>
-                <div id="done_1" class="wells sticky_done draggable">
+                <div id="done_1" class="wells sticky_done draggable" style="height:auto">
                     <h3 style="color:black">Create mock project</h3>
                     <div style="color:black">some description</div>
                     <div align="left">

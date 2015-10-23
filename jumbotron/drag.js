@@ -54,7 +54,6 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($done);
-
             $("#" + draggableId).attr("class", "wells sticky_done ui-draggable");
 
         }
@@ -67,6 +66,7 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($doing);
+	    $("#" + draggableId).attr("class", "wells sticky ui-draggable");
         }
     });
     $todo.droppable({
@@ -77,6 +77,7 @@ $(function() {
             var draggableId = ui.draggable.attr("id");
             var droppableId = $(this).attr("id");
             $("#" + draggableId).appendTo($todo);
+	    $("#" + draggableId).attr("class", "wells sticky ui-draggable");
         }
     });
 
