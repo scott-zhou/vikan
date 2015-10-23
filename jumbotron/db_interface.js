@@ -143,6 +143,15 @@ App.controller('task_ctrl', function($scope, $http, $q, $templateCache) {
     }
 
 
+/*$scope.add_new_task('Connect MongoLab DB', 'test', 'Done', 'Scott', 'Create db in MongoLab');
+$scope.add_new_task('DB interface', 'coding', 'Doing', 'Scott', 'JS functions for DB');
+$scope.add_new_task('Frontent page', 'coding', 'Done', 'Rockie', 'Use angularJS to create page');
+$scope.add_new_task('Task drag-drop', 'coding', 'Doing', 'Rockie', 'Make task dragable and dropable');
+$scope.add_new_task('Delete task', 'coding', 'Done', 'Robin', 'Delete done tasks');
+$scope.add_new_task('Move task', 'coding', 'Doing', 'Robin', 'Move task into different status');
+$scope.add_new_task('Authentication', 'coding', 'ToDo', 'VIKAN', 'User login');
+$scope.add_new_task('Support IPad', 'coding', 'ToDo', 'VIKAN', 'Let the page support IPad');*/
+
     //  $scope.add_new_task('Done task', 'test', 'Done', 'Rockie', 'Add a Done task in mongo db');
     //  $scope.update_task('5628c903e4b0bf8fc40631f7', 'Updated task', 'test', 'ToDo', 'Rockie', 'Update task in mongo db');
     //  $scope.delete_task('5628df76e4b07a7ab89612ea');
