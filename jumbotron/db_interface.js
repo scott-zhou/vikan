@@ -23,7 +23,7 @@ var App = angular.module('kanban', [])
                     promise.then(function(data) {
                         console.log('NEW TASK ID: ' + data._id.$oid);
                         var template = $('#hidden-template').html();
-                        var new_task = template.replace('todo_template', data._id.$oid.toString();
+                        var new_task = template.replace('todo_template', data._id.$oid.toString());
                         var $todo = $('#todo');
                         $todo.append(new_task);
                         $("> div", $todo).draggable({
