@@ -49,6 +49,11 @@ App.controller('task_ctrl', function($scope, $http, $q, $templateCache) {
     $scope.doing_tasks = [];
     $scope.done_tasks = [];
 
+    $scope.task_user = "task user";
+    // $scope.setUser = function(user) {
+    //     $scope.taskUser = user;
+    // }
+
     $scope.query_tasks = function() {
         $scope.method = 'GET';
         $scope.url = 'https://api.mongolab.com/api/1/databases/vikanban/collections/task?apiKey=MUB9xFbstbjdkOkoub_h_40gdV_KX4lm';
