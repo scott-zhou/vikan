@@ -76,85 +76,82 @@
        </nav>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="container" ng-controller="task_ctrl">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div id="todo" class="col-md-4">
-          <div>
-            <h2> TODO <div id="addTask" class="btn btn-primary"> + </div></h2>
-                   </div>
-          <div id="{{ task._id.$oid.toString() }}" class="wells sticky
-							  draggable"
-	       urgent="true" style="background-color: #E8E523; height: auto" ng-repeat="task in todo_tasks" my-repeat-directive>
-            <h3 style="color:black">{{ task.title
-	      }} </h3>
-            <div class="editable" style="color:black" data-type="text">{{ task.description }}</div>
-            <div style="color:black">{{ task.owner }}</div>
-            <div align="left">
-              <input type="checkbox" aria-label="  ">Cras justo odio
-              <span class="badge">14</span>
-								 </div>
-            <div>
-              <input type="checkbox">test kvm machine
-              <span class="badge">2</span>
-                       </div>
-                   </div>
-          <div id="gallery" class="wells sticky draggable" style="background-color: #E8E523; height: auto">
-            <h3 style="color:black">Create mock project</h3>
-            <div class="editable" style="color:black" data-type="text">some description</div>
-            <div align="left">
-              <input type="checkbox" aria-label="  ">Cras justo odio
-              <span class="badge">14</span>
-                       </div>
-            <div>
-              <input type="checkbox">test kvm machine
-              <span class="badge">2</span>
-                       </div>
-                   </div>
-          <br>
-               </div>
-        <div id="doing" class="col-md-4" style="padding-right: 25px;">
-          <h2> Doing </h2>
-          <div id="first_doing" class="wells sticky">
-            <h3 style="color:black">solve database connection problem</h3>
-            <div style="color:black">some description</div>
-            <div align="left">
-              <input type="checkbox" aria-label="  ">Cras justo odio
-              <span class="badge">14</span>
-                       </div>
-            <div>
-              <input type="checkbox">test kvm machine
-              <span class="badge">2</span>
-                       </div>
-            <div class="actions">
-              <span class="glyphicon glyphicon-edit"></span>
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-                       </div>
-                   </div>
-               </div>
-        <div id="done" class="col-md-4" style="padding-right: 5px;">
-          <h2> Done </h2>
-          <div id="done_1" class="wells sticky_done draggable" style="height:auto">
-            <h3 style="color:black">Create mock project</h3>
-            <div style="color:black">some description</div>
-            <div align="left">
-              <input type="checkbox" aria-label="  ">Cras justo odio
-              <span class="badge">14</span>
-                       </div>
-            <div>
-              <input type="checkbox">test kvm machine
-              <span class="badge">2</span>
-                       </div>
-            <div class="actions">
-              <span class="glyphicon glyphicon-trash"></span>
-                       </div>
-                   </div>
-               </div>
-           </div>
-      <hr>
-      <footer>
-        <p>&copy; ViKan 2015</p>
-           </footer>
-       </div>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div id="todo" class="col-md-4">
+                <div>
+                    <h2> TODO <div add-task-dir id="addTask" class="btn btn-primary"> + </div></h2>
+                </div>
+                <div id="{{ task._id.$oid.toString() }}" class="wells sticky draggable" style="background-color: #E8E523; height: auto" ng-repeat="task in todo_tasks" my-repeat-directive>
+                    <h3 style="color:black">{{ task.title }}</h3>
+                    <div class="editable" style="color:black" data-type="text">{{ task.description }}</div>
+                    <div style="color:black">{{ task.owner }}</div>
+                    <div align="left">
+                        <input type="checkbox" aria-label="  ">Cras justo odio
+                        <span class="badge">14</span>
+                    </div>
+                    <div>
+                        <input type="checkbox">test kvm machine
+                        <span class="badge">2</span>
+                    </div>
+                </div>
+                <div id="gallery" class="wells sticky draggable" style="background-color: #E8E523; height: auto">
+                    <h3 style="color:black">Create mock project</h3>
+                    <div class="editable" style="color:black" data-type="text">some description</div>
+                    <div align="left">
+                        <input type="checkbox" aria-label="  ">Cras justo odio
+                        <span class="badge">14</span>
+                    </div>
+                    <div>
+                        <input type="checkbox">test kvm machine
+                        <span class="badge">2</span>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div id="doing" class="col-md-4" style="padding-right: 25px;">
+                <h2> Doing </h2>
+                <div id="first_doing" class="wells sticky">
+                    <h3 style="color:black">solve database connection problem</h3>
+                    <div style="color:black">some description</div>
+                    <div align="left">
+                        <input type="checkbox" aria-label="  ">Cras justo odio
+                        <span class="badge">14</span>
+                    </div>
+                    <div>
+                        <input type="checkbox">test kvm machine
+                        <span class="badge">2</span>
+                    </div>
+                    <div class="actions">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="done" class="col-md-4" style="padding-right: 5px;">
+                <h2> Done </h2>
+                <div id="done_1" class="wells sticky_done draggable" style="height:auto">
+                    <h3 style="color:black">Create mock project</h3>
+                    <div style="color:black">some description</div>
+                    <div align="left">
+                        <input type="checkbox" aria-label="  ">Cras justo odio
+                        <span class="badge">14</span>
+                    </div>
+                    <div>
+                        <input type="checkbox">test kvm machine
+                        <span class="badge">2</span>
+                    </div>
+                    <div class="actions">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <p>&copy; ViKan 2015</p>
+        </footer>
+    </div>
     <script src="db_interface.js"></script>
     <!-- /container -->
     <!-- <div class="jumbotron">
