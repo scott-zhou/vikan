@@ -1,6 +1,10 @@
 # vikan
 Web application for virtual kanban (backlog &amp; task list)
 
+Application is located on GitHub Pages now.
+http://scott-zhou.github.io/vikan/
+
+## Base technologies:
 based on angular,bootstrap,mongolab
 
 http://code.tutsplus.com/tutorials/create-a-sticky-note-effect-in-5-easy-steps-with-css3-and-html5--net-13934
