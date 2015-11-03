@@ -39,6 +39,21 @@ var App = angular.module('kanban', [])
                 element.on('click', functionToBeCalled);
             }
         }
+    })
+    .directive('delTaskDir', function() {
+        return {
+            restrict: 'A',
+            scope: true,
+            link: function(scope, element, attrs) {
+                function functionToBeCalled() {
+                    scope.delete_task(attrs.id);
+                    console.log("Delete task: "+attrs.id);
+                    var $task = $('#'+attrs.id);
+                    $task.empty();
+                }
+                element.on('click', functionToBeCalled);
+            }
+        }
     });
 
 App.controller('task_ctrl', function($scope, $http, $q, $templateCache) {
