@@ -19,22 +19,22 @@ var App = angular.module('kanban', [])
             scope: true,
             link: function(scope, element, attrs) {
                 function functionToBeCalled() {
-                    var promise = scope.add_new_task('Create mock project', 'coding', 'ToDo', 'VIKAN', 'some description');
-                    promise.then(function(data) {
-                        console.log('NEW TASK ID: ' + data._id.$oid);
-                        var template = $('#hidden-template').html();
-                        var new_task = template.replace('todo_template', data._id.$oid.toString());
-                        var $todo = $('#todo');
-                        $todo.append(new_task);
-                        $("> div", $todo).draggable({
-                            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-                            revert: "invalid", // when not dropped, the item will revert back to its initial position
-                            containment: "document",
-                            helper: "clone",
-                            cursor: "move"
-                        });
-                        $('.editable').editable();
-                    });
+                    scope.add_new_task('Create mock project', 'coding', 'ToDo', 'VIKAN', 'some description');
+                    // promise.then(function(data) {
+                    //     console.log('NEW TASK ID: ' + data._id.$oid);
+                    //     var template = $('#hidden-template').html();
+                    //     var new_task = template.replace('todo_template', data._id.$oid.toString());
+                    //     var $todo = $('#todo');
+                    //     $todo.append(new_task);
+                    //     $("> div", $todo).draggable({
+                    //         cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+                    //         revert: "invalid", // when not dropped, the item will revert back to its initial position
+                    //         containment: "document",
+                    //         helper: "clone",
+                    //         cursor: "move"
+                    //     });
+                    //     $('.editable').editable();
+                    // });
                 }
                 element.on('click', functionToBeCalled);
             }
@@ -47,9 +47,9 @@ var App = angular.module('kanban', [])
             link: function(scope, element, attrs) {
                 function functionToBeCalled() {
                     scope.delete_task(attrs.id);
-                    console.log("Delete task: "+attrs.id);
-                    var $task = $('#'+attrs.id);
-                    $task.empty();
+                    // console.log("Delete task: "+attrs.id);
+                    // var $task = $('#'+attrs.id);
+                    // $task.empty();
                 }
                 element.on('click', functionToBeCalled);
             }
@@ -78,6 +78,7 @@ App.controller('task_ctrl', function($scope, $http, $q, $templateCache) {
             cache: $templateCache
         }).
         success(function(data) {
+            console.log("query_tasks");
             var arrayLength = data.length;
             for (var i = 0; i < arrayLength; i++) {
                 task = data[i];
@@ -103,19 +104,16 @@ App.controller('task_ctrl', function($scope, $http, $q, $templateCache) {
             "owner": owner,
             "description": description
         };
-        var defer = $q.defer();
         $http({
             method: $scope.method,
             url: $scope.url,
             data: $scope.data,
-            cache: $templateCache
         }).
         success(function(data) {
             console.log("Add new task result!");
             console.log(data);
-            defer.resolve(data);
+            $scope.todo_tasks.push(data);
         });
-        return defer.promise;
     };
 
     $scope.update_task = function(id, title, type, status, owner, description) {
@@ -137,12 +135,21 @@ App.controller('task_ctrl', function($scope, $http, $q, $templateCache) {
     };
 
     $scope.delete_task = function(id) {
-        $scope.method = 'DELETE';
         $scope.url = 'https://api.mongolab.com/api/1/databases/vikanban/collections/task/' + id + '?apiKey=' + $scope.apiKey;
         $http({
-            method: $scope.method,
+            method: 'DELETE',
             url: $scope.url,
+            data: {},
             cache: $templateCache
+        }).then(function(response){
+            var tasks = [];
+            for (var i in $scope.todo_tasks) {
+                var task = $scope.todo_tasks[i];
+                if ('_id' in task && task._id.$oid != id) {
+                    tasks.push(task);
+                }
+            }
+            $scope.todo_tasks = tasks;
         });
     }
 
